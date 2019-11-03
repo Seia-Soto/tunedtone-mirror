@@ -1,1 +1,42 @@
-# mirror
+# Tunedtone/mirror
+
+The mirror server to provide YouTube videos.
+
+## Table of Contents
+
+- [Concept](#Concept)
+- [License](#License)
+
+----
+
+# Concept
+
+To download a YouTube video safely, we need to anonymous ourselves because if we don't anonymous ourselves, we'll rate-limited and prevented from YouTube internal system. To avoid these issues, people used proxies and mirror servers. This is one alternative to download videos safely. This mirror server is configured with WebSocket to prevent tracking from outside of system and to provide service even on the host which can't get a request from outside.
+
+# License
+
+Tunedtone repositories are accepting MIT license.
+
+```text
+MIT License
+
+Copyright 2019 Seia-Soto and Tunedtone contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
