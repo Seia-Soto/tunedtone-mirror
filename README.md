@@ -71,7 +71,7 @@ The general error code from the function call is figured with 4 digits. The firs
 | Type | Name | Code | Message |
 | :------------- | :------------- | :------------- | :------------- |
 | General | - | 500 | Unknown error from function call. |
-| Function | youtube/searchVideos | 1001 | There is no keyword to search. |
+| Function | youtube/searchVideos | 1011 | There is no keyword to search. |
 
 # License
 
