@@ -46,9 +46,8 @@ module.exports = (ws, pack) => {
     return ws.send(JSON.stringify({
       error: {
         code: 1011,
-        message: 'There is no keyword to search'
-      },
-      key: ws._key
+        message: 'There is no keyword to search.'
+      }
     }))
   }
 

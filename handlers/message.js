@@ -10,6 +10,13 @@ module.exports = (ws, data) => {
     }
   } catch (error) {
     console.error(error)
+
+    ws.send(JSON.stringify({
+      error: {
+        code: 500,
+        message: 'Unknown error from function call.' // NOTE: Need to hide the error.
+      }
+    }))
   } finally {
     // NOTE: Logging.
   }
