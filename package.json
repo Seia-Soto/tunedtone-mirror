@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/tunedtone/mirror#readme",
   "dependencies": {
-    "ws": "^7.2.0",
+    "node-lzma": "^0.1.0",
+    "restify": "^8.4.0",
     "ytdl-core": "^1.0.0",
     "ytpl": "^0.1.17",
     "ytsr": "^0.1.9"

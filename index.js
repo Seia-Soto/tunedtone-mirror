@@ -1,13 +1,20 @@
-const WebSocket = require('ws')
+const restify = require('restify')
 
-const handlers = require('./handlers')
-
+const functions = require('./functions')
+const middlewares = require('./middlewares')
 const config = require('./config')
 
-const ws = new WebSocket(config.gateway.url, config.socket.option)
-
-ws.once('open', () => {
-  ws._key = config.app.statics.key
-
-  ws.on('message', handlers.message.bind(null, ws))
+const server = restify.createServer({
+  name: 'Tunedtone/mirror',
+  dtrace: false
 })
+
+server.use(restify.plugins.acceptParser(server.acceptable))
+server.use(restify.plugins.dateParser(59))
+server.use(restify.plugins.queryParser({ mapParams: true }))
+server.use(restify.plugins.jsonp())
+server.use(restify.plugins.gzipResponse())
+
+server.get('/youtube/searchVideos', functions.youtube.searchVideos)
+
+server.listen(config.app.host.port)

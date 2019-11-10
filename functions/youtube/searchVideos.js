@@ -3,13 +3,13 @@ const ytsr = require('ytsr')
 
 const config = require('../../config')
 
-const search = async (keyword, limit, depth) => {
+const searchVideos = async (keyword, limit, depth) => {
   try {
     keyword = keyword || ''
     limit = limit || config.app.functions.youtube.searchVideos.resultLimit || 5
-    depth = await depth || config.app.functions.youtube.searchVideos.maxDepth || 5
+    depth = depth || config.app.functions.youtube.searchVideos.maxDepth || 5
 
-    if (depth >= 5) {
+    if (limit > depth * (config.app.functions.youtube.searchVideos.resultLimit || 5)) {
       return []
     }
 
@@ -28,34 +28,32 @@ const search = async (keyword, limit, depth) => {
     }
 
     if (!items.length) {
-      const extended = await search(keyword, limit, ++depth)
+      const extended = await searchVideos(keyword, limit, ++depth)
 
       return extended
     }
 
     return items
   } catch (error) {
+    console.error(error)
+
     return []
   }
 }
 
-module.exports = (ws, pack) => {
-  const keyword = pack.opts.keyword || ''
+module.exports = async (req, res, next) => {
+  const keyword = await req.params.keyword || ''
 
   if (!keyword) {
-    return ws.send(JSON.stringify({
-      error: {
-        code: 1011,
-        message: 'There is no keyword to search.'
-      }
-    }))
+    res.send({
+      error: 1011,
+      message: 'There is no keyword to search.'
+    })
+
+    return
   }
 
-  search(keyword)
-    .then(result => {
-      ws.send(JSON.stringify({
-        result,
-        key: ws._key
-      }))
-    })
+  const results = await searchVideos(keyword)
+
+  res.send(results)
 }

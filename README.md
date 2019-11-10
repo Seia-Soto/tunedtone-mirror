@@ -12,38 +12,13 @@ The mirror server to provide YouTube videos.
 
 # Concept
 
-To download a YouTube video safely, we need to anonymous ourselves because if we don't anonymous ourselves, we'll rate-limited and prevented from YouTube internal system. To avoid these issues, people used proxies and mirror servers. This is one alternative to download videos safely. This mirror server is configured with WebSocket to prevent tracking from outside of the system and to provide service even on the host which can't get a request from outside.
+To download a YouTube video safely, we need to anonymous ourselves because if we don't anonymous ourselves, we'll rate-limited and prevented from YouTube internal system. To avoid these issues, people used proxies and mirror servers. This is one alternative to download videos safely. ~~This mirror server is configured with WebSocket to prevent tracking from outside of the system and to provide service even on the host which can't get a request from outside.~~
 
 # Docs
 
-## Structure of data
+## Response
 
-Basically, we use a stringified JSON format to send data through WebSocket. Also, you need to specify the private key which needed to do execute functions. Below is the structure of a basic query.
-
-```JSON
-{
-  "key": "tunedtone",
-  "subject": "youtube",
-  "call": "searchVideos",
-  "opts": {
-    "keyword": "Hello by Adele"
-  }
-}
-```
-
-## Return values
-
-If the mirror server was able to get the correct data, you can get the result of the function call from the key 'result'.
-
-```JSON
-{
-  "result": {
-    ...
-  }
-}
-```
-
-## Handling errors
+### Error
 
 However, if there were an error during calling the function, you'll get the error code from the response. See the example response below.
 
@@ -70,8 +45,8 @@ The general error code from the function call is figured with 4 digits. The firs
 
 | Type | Name | Code | Message |
 | :------------- | :------------- | :------------- | :------------- |
-| General | - | 500 | Unknown error from function call. |
 | Function | youtube/searchVideos | 1011 | There is no keyword to search. |
+| Function | youtube/downloadMusic | 1021 | Failed to download audio stream. |
 
 # License
 
