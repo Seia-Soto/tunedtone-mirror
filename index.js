@@ -15,6 +15,11 @@ server.use(restify.plugins.queryParser({ mapParams: true }))
 server.use(restify.plugins.jsonp())
 server.use(restify.plugins.gzipResponse())
 
-server.get('/youtube/searchVideos', functions.youtube.searchVideos)
+server.use(middlewares.verifyKey)
 
-server.listen(config.app.host.port)
+server.get('/youtube/searchVideos', functions.youtube.searchVideos)
+server.get('/youtube/downloadVideo', functions.youtube.downloadVideo)
+
+server.listen(config.app.host.port, () => {
+  console.log('The mirror server is listening from port:%d', config.app.host.port)
+})
