@@ -6,6 +6,8 @@ module.exports = (req, res, next) => {
       error: 403,
       message: 'Invalid or missing the verification key.'
     })
+
+    return
   }
 
   next()
