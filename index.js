@@ -21,5 +21,5 @@ server.get('/youtube/searchVideos', functions.youtube.searchVideos)
 server.get('/youtube/downloadVideo', functions.youtube.downloadVideo)
 
 server.listen(config.app.host.port, () => {
-  console.log('The mirror server is listening from port:%d', config.app.host.port)
+  console.log('The mirror server is listening from port:%d', process.env.PORT || config.app.host.port)
 })
