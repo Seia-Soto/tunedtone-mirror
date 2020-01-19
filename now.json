@@ -6,6 +6,9 @@
     "src": "index.js",
     "use": "@now/node-server"
   }],
+  "engines": {
+    "node": "8.x"
+  },
   "routes": [{
     "headers": {
       "Access-Control-Allow-Origin": "*",
